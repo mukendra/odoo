@@ -15,7 +15,7 @@ run adduser --system --home=/opt/odoo --group odoo
 run mkdir /var/log/odoo
 
 workdir /opt/odoo
-run git clone 
+run git clone https://github.com/mukendra/odoo.git
 run rm -r /opt/odoo/odoo/odoo-9/addons
 run cp -r /opt/odoo/odoo/odoo-9/* /opt/odoo/ && rm -r /opt/odoo/odoo/odoo-9
 run cp -r /opt/odoo/odoo/* /opt/odoo/ && rm -r /opt/odoo/odoo
