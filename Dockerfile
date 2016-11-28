@@ -1,5 +1,5 @@
 from ansible/ubuntu14.04-ansible
-maintainer akhil
+maintainer mukki
 run apt-get -y update && apt-get -y upgrade
 
 run apt-get install -y 	subversion git bzr bzrtools postgresql postgresql-server-dev-9.3 \
@@ -15,7 +15,7 @@ run adduser --system --home=/opt/odoo --group odoo
 run mkdir /var/log/odoo
 
 workdir /opt/odoo
-run git clone -b odoo https://github.com/akhilrajmailbox/odoo.git
+run git clone 
 run rm -r /opt/odoo/odoo/odoo-9/addons
 run cp -r /opt/odoo/odoo/odoo-9/* /opt/odoo/ && rm -r /opt/odoo/odoo/odoo-9
 run cp -r /opt/odoo/odoo/* /opt/odoo/ && rm -r /opt/odoo/odoo
@@ -33,10 +33,10 @@ run cp -r /usr/local/bin/wkhtmltoimage /usr/bin
 run cp /opt/odoo/debian/openerp-server.conf /etc/odoo-server.conf
 workdir /etc
 run sed -i "s|; admin_passwd = admin|admin_passwd = postgres|g" odoo-server.conf
-run sed -i "s|db_host = False|db_host = 192.168.1.234|g" odoo-server.conf
+run sed -i "s|db_host = False|db_host = 192.168.1.63|g" odoo-server.conf
 run sed -i "s|db_port = False|db_port = 5432|g" odoo-server.conf
-run sed -i "s|db_user = odoo|db_user = abhi1|g" odoo-server.conf
-run sed -i "s|db_password = False|db_password = abhi1|g" odoo-server.conf
+run sed -i "s|db_user = odoo|db_user = odoo|g" odoo-server.conf
+run sed -i "s|db_password = False|db_password = root|g" odoo-server.conf
 run sed -i "s|addons_path = /usr/lib/python2.7/dist-packages/openerp/addons|#addons_path = /usr/lib/python2.7/dist-packages/openerp/addons|g" odoo-server.conf
 run rm -r /etc/ssmtp/ssmtp.conf
 run cp -r /opt/odoo/ssmtp.conf /etc/ssmtp/ssmtp.conf
